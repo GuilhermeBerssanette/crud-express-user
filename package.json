@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon serc/server.js",
-    "start": "node serc/server.js",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
     "test": "jest --runInBans"
   },
   "keywords": [],

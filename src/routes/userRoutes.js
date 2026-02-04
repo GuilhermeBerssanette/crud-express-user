@@ -5,9 +5,9 @@ const {
 } = require("../controllers/userController");
 
 router.get("/", getUsers);
-router.get("/:id");
-router.post("/");
-router.put("/:id");
-router.delete("/:id");
+// router.get("/:id");
+// router.post("/");
+// router.put("/:id");
+// router.delete("/:id");
 
 module.exports = router;
