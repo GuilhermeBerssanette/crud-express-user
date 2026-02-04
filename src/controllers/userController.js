@@ -7,8 +7,70 @@ const getUsers = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
+};
+
+const createUser = async (req, res) => {
+    const user = new User(req.body);
+    try {
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
 }
 
+const deleteUser = async (req,res) => {
+    try {
+        const removed = await User.findByIdAndDelete(req.params.id);
+
+        if(!removed) {
+            return res.status(404).json({ message: "User não encontrado"})
+        }
+
+        res.status(204).send()
+    } catch (error) { 
+        res.status(400).json({ message: "Id invalido"})
+    }
+}
+
+//eu sou a lions dev
+// eu sou a tech skills, eu sou tudo, eu sou a aura
+// luis, 4/02/2026
+
+const updateUser = async (req, res) => { 
+    try {
+        const updated = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+        if (!updated) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(updated);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
+const getUserById = async (req, res) => {
+    try {
+        const user = await user.findById(req.params.id);
+
+        if(!user) {
+            return res.status(404).json({ message: "Usuário não encontrado"})
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json({ message: "Id Invalido"})
+    }
+};
+
+
+
 module.exports = {
-    getUsers
+    getUsers,
+    createUser,
+    deleteUser,
+    updateUser,
+    getUserById
 };
